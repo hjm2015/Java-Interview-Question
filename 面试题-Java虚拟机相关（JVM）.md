@@ -13,7 +13,7 @@
 
 ### 1.2、双亲委派模型
 
-![类加载器](D:\BaiduNetdiskWorkspace\mdFile\面试题\photo\jvm虚拟机\classLoader.png)
+![类加载器](https://github.com/hjm2015/Java-Interview-Question/blob/main/photo/jvm%E8%99%9A%E6%8B%9F%E6%9C%BA/classLoader.png)
 
 ​		由于Java提供的类加载器有父子关系（不是Java中的继承）,类加载器的属性中有个parent属性，由于应用程序类加载器的parent是扩展类加载器，所以当应用程序类加载器加载一个类的时候会先检查自己是否已经加载过该类，如果没有，则委托给他的parent-扩展类加载器去负责加载，同理扩展类加载器加载器的parent是个 null，因为引导类加载器是由c源码编写的，所以当parent是空的时候，默认去调用引导类加载器；当引导类加载器没有的查找到该类的时候，就继续由扩展类加载器进行加载，同理扩展类加载器没有查找到该类的时候，则由应用程序类加载器进行加载，如果都没有则抛出异常；如果找到了的话，会将该类缓存起来，方便下次再次进行类加载。
 
